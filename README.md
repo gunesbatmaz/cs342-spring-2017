@@ -1,10 +1,4 @@
+Güneş Batmaz 21300512
+Gülşah Kırtıloğlu 21101432
 
-Names and IDs  of students
-
-
-Describe your solution here briefly. 
-
-
-
-
-
+Solution :D

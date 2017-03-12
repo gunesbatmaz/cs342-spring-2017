@@ -1,1 +1,10 @@
-# cs342-spring-2017
+
+Names and IDs  of students
+
+
+Describe your solution here briefly. 
+
+
+
+
+

@@ -7,6 +7,13 @@
 
 /* You will define your TCB structure here */
 
+typedef struct TCB{
+	struct TCB *next;
+	int t_id;
+	ucontext_t *context;
+	
+}TCB;
+
 
 /* Some definitions below */
 

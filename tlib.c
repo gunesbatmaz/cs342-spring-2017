@@ -7,6 +7,13 @@
 #include <ucontext.h>
 #include "tlib.h"
 
+TCB* head = NULL;
+TCB* tail = NULL;
+int curr = 0;
+int length = 0; //lenght of the queue-like structure contains threads
+int tid;
+
+
 
 int tlib_init (void)
 {
@@ -26,21 +33,46 @@ void stub (void (*tstartf)(void *), void *arg)
     exit(0);
 }
 
-
 int tlib_create_thread(void (*func)(void *), void *param)
 {
-    return (TLIB_ERROR);
+	if(length >= TLIB_MAX_THREADS)
+		return TLIB_NOMORE;
+	else if (length == 0) {
+		TCB* new_tcb = (TCB *)malloc(sizeof(TCB));
+		new_tcb -> context = (ucontext_t *)malloc(sizeof(ucontext_t));
+		//makecontext
+		new_tcb->next = NULL;
+		head = new_tcb;
+		tail = head;
+	}
+	else
+	{
+		TCB* new_tcb = (TCB *)malloc(sizeof(TCB));
+		new_tcb -> context = (ucontext_t *)malloc(sizeof(ucontext_t));
+		//makecontext
+		new_tcb->next = NULL;
+		tail->next = new_tcb;
+		tail = new_tcb; 
+	}
+
+    //return (TLB_ERROR);
 }
 
 
 int tlib_yield(int wantTid)
 {
-	return (TLIB_ERROR);
+	if (wantTid > TLIB_MAX_THREADS)
+		 return TLIB_INVALID;
+	else if( wantTid == TLIB_SELF)
+		return TLIB_INVALID;
+	else{
+
+	}
 }
 
 
 int tlib_delete_thread(int tid)
 {
-    return (TLIB_ERROR);
+    
 }
 
